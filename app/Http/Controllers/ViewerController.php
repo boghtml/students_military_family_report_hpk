@@ -38,9 +38,8 @@ class ViewerController extends Controller
             $direction = 'asc';
         }
 
-        // Запит з пошуком і фільтрацією
         $students = Student::with(['relatives'])
-            ->withCount('relatives') // Підраховуємо кількість родичів для сортування
+            ->withCount('relatives')
             ->when($search, function ($query, $search) {
                 return $query->where('first_name', 'like', "%$search%")
                     ->orWhere('last_name', 'like', "%$search%")

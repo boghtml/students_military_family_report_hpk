@@ -13,7 +13,6 @@ class StudentController extends Controller
      */
     public function index()
     {
-        // Отримуємо всіх студентів разом із їхніми родичами
         $students = Student::with('relatives')->get();
         return view('admin.students.index', compact('students'));
     }
@@ -31,7 +30,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // Валідація вхідних даних
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -40,10 +38,7 @@ class StudentController extends Controller
             'military_relation' => 'nullable|string|max:255',
         ]);
 
-        // Створюємо студента
         $student = Student::create($request->only(['first_name', 'last_name', 'middle_name', 'group_name', 'military_relation']));
-
-        // Після створення студента можна додати родичів, якщо це необхідно
 
         return redirect()->route('students.index')->with('success', 'Студента додано');
     }
@@ -64,7 +59,6 @@ class StudentController extends Controller
     {
         $student = Student::findOrFail($id);
 
-        // Валідація вхідних даних
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -73,7 +67,6 @@ class StudentController extends Controller
             'military_relation' => 'nullable|string|max:255',
         ]);
 
-        // Оновлення студента
         $student->update($request->only(['first_name', 'last_name', 'middle_name', 'group_name', 'military_relation']));
 
         return redirect()->route('students.index')->with('success', 'Студента оновлено');

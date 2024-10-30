@@ -45,7 +45,6 @@ Route::middleware('auth')->group(function () {
             });
     });
 
-    
     Route::group([
         'prefix' => 'viewer',
         'as' => 'viewer.',

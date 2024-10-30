@@ -9,7 +9,6 @@
         @csrf
         @method('PUT')
 
-        <!-- Поля для студента -->
         <h2 class="text-xl font-bold mb-2">Інформація про студента</h2>
 
         <div class="mb-3">
