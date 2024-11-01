@@ -10,18 +10,18 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        
+
         User::create([
-            'name' => 'Admin',
-            'email' => 'boghtml@gmail.com',
-            'password' => Hash::make('1234567890HTML'), 
-            'role' => 'admin', 
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('1234567890HTML'),
+            'role' => 'admin',
         ]);
 
         User::create([
-            'name' => 'Adnrii',
+            'name' => 'viewer',
             'email' => 'viewer@gmail.com',
-            'password' => Hash::make('1234567890HTML'), 
+            'password' => Hash::make('1234567890HTML'),
             'role' => 'viewer',
         ]);
     }
