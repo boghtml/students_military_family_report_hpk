@@ -1,5 +1,8 @@
 FROM php:8.3-fpm
 
+ARG UID=1000
+ARG GID=1000
+
 # Set working directory
 WORKDIR /var/www
 
@@ -8,7 +11,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 # Install php extensions
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions mbstring pdo_mysql pdo_pgsql zip exif pcntl gd memcached redis
+    install-php-extensions mbstring pdo_mysql zip exif pcntl gd memcached redis
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
